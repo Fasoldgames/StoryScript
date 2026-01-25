@@ -1,9 +1,9 @@
 import { IGame, Location } from '../types';
-import description from './OldPillar.html?raw';
+import description from './StrangeStructure.html?raw';
 
-export function OldPillar() {
+export function StrangeStructure() {
 	return Location({
-		name: 'OldPillar',
+		name: 'StrangeStructure',
 		description: description,
 		destinations: [
 			
