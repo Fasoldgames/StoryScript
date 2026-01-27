@@ -1,8 +1,8 @@
 import { IGame, Location } from '../types';
-import { Listen } from './listen';
-import { LookAround } from './LookAround';
+import { OldPillar } from './OldPillar';
 import description from './OldTemple.html?raw';
 import { Start } from './start';
+import { StrangeStructure } from './StrangeStructure';
 
 export function OldTemple() {
 	return Location({
@@ -12,6 +12,14 @@ export function OldTemple() {
 			{
 				name: 'Return to Camp',
 				target: Start
+			},	
+			{
+				name: 'Old Pillar',
+				target: OldPillar
+			},	
+			{
+				name: 'Strange Structure',
+				target: StrangeStructure
 			},			
 		], 
 		actions: [[
@@ -19,9 +27,8 @@ export function OldTemple() {
 				{
 				text: 'Listen',
 				execute: (game: IGame) => {
-					//game.currentLocation.descriptionSelector='listen';
+					game.currentLocation.descriptionSelector='listen';
 					game.actionLog.length=0;
-					game.logToActionLog(game.currentLocation.descriptions['listen']);
 					return true;
 				},
 			}
@@ -30,8 +37,8 @@ export function OldTemple() {
 				{
 				text: 'Look around',
 				execute: (game: IGame) => {
+					game.currentLocation.descriptionSelector='look';
 					game.actionLog.length=0;
-					game.logToActionLog(game.currentLocation.descriptions['look']);
 					return true;
 				},
 			}

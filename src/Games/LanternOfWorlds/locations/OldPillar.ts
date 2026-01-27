@@ -7,6 +7,17 @@ export function OldPillar() {
 		description: description,
 		destinations: [
 			
+		],
+		actions: [[
+			'Dig',
+				{
+				text: 'Dig',
+				execute: (game: IGame) => {
+					game.currentLocation.descriptionSelector='Dig';
+					game.actionLog.length=0;
+				},
+			}
+		]
 		]
 	});
 }
