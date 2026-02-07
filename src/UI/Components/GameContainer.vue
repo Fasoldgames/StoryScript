@@ -14,7 +14,6 @@
           <encounter></encounter>
           <location-text></location-text>
           <location-visual></location-visual>
-          <action-log></action-log>
           <ground></ground>
           <exploration></exploration>
           <enemy></enemy>
