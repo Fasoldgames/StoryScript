@@ -527,3 +527,43 @@ dialog {
     border: none;
     outline: none;
 }
+
+/* Wood-like Border */
+.app {
+    --wood-border-width: 20px;
+    --wood-color-light: #8B6F47;
+    --wood-color-medium: #704214;
+    --wood-color-dark: #3E2723;
+    --wood-color-highlight: #D2B48C;
+    --parchment-color: #F4E6D3;
+    
+    position: relative;
+    background: linear-gradient(135deg, var(--parchment-color) 0%, #EDD8C3 50%, #F9F1E8 100%),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="1"/></filter><rect width="200" height="200" fill="url(%23parchment)" filter="url(%23noise)" opacity="0.03"/></svg>'),
+                white;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+.app::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    border: var(--wood-border-width) solid;
+    border-image-source: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><defs><linearGradient id="wood" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%238B6F47;stop-opacity:1" /><stop offset="25%" style="stop-color:%23704214;stop-opacity:1" /><stop offset="50%" style="stop-color:%233E2723;stop-opacity:1" /><stop offset="75%" style="stop-color:%23704214;stop-opacity:1" /><stop offset="100%" style="stop-color:%238B6F47;stop-opacity:1" /></linearGradient></defs><rect width="200" height="200" fill="url(%23wood)"/><line x1="0" y1="20" x2="200" y2="25" stroke="%23D2B48C" stroke-width="1" opacity="0.3"/><line x1="0" y1="50" x2="200" y2="52" stroke="%23D2B48C" stroke-width="0.5" opacity="0.2"/><line x1="0" y1="80" x2="200" y2="78" stroke="%23D2B48C" stroke-width="1" opacity="0.25"/><line x1="0" y1="120" x2="200" y2="122" stroke="%23D2B48C" stroke-width="0.5" opacity="0.2"/><line x1="0" y1="160" x2="200" y2="158" stroke="%23D2B48C" stroke-width="1" opacity="0.3"/><circle cx="30" cy="40" r="2" fill="%23000" opacity="0.1"/><circle cx="150" cy="90" r="1.5" fill="%23000" opacity="0.08"/><circle cx="80" cy="140" r="2.5" fill="%23000" opacity="0.12"/></svg>');
+    border-image-slice: 66;
+    border-image-repeat: repeat;
+    border-image-width: var(--wood-border-width);
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+.app {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}

@@ -6,6 +6,7 @@ import { StrangeStructure } from './StrangeStructure';
 import { ActionStatus } from '../../../Engine/Interfaces/enumerations/actionStatus';
 
 export function OldTemple() {
+	let hasListened = false;
 	let hasLookedAround = false;
 
 	return Location({
@@ -26,9 +27,11 @@ export function OldTemple() {
 			'Listen',
 				{
 				text: 'Listen',
+				status: () => hasListened ? ActionStatus.Unavailable : ActionStatus.Available,
 				execute: (game: IGame) => {
 					game.currentLocation.descriptionSelector='listen';
 					game.actionLog.length=0;
+					hasListened = true;
 					return true;
 				},
 			}
