@@ -567,3 +567,50 @@ dialog {
     overflow: hidden;
     box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
 }
+
+/* Wooden Button Styling */
+.btn, button {
+    background: linear-gradient(180deg, #A0826D 0%, #8B6F47 25%, #704214 50%, #8B6F47 75%, #A0826D 100%) !important;
+    background-size: 100% 200%;
+    color: #F4E6D3 !important;
+    border: 2px solid #3E2723 !important;
+    border-radius: 6px;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -1px 2px rgba(0, 0, 0, 0.3),
+                0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before, button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn:hover, button:hover {
+    background-position: 0 100%;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                inset 0 -1px 2px rgba(0, 0, 0, 0.4),
+                0 6px 12px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn:hover::before, button:hover::before {
+    left: 100%;
+}
+
+.btn:active, button:active {
+    background-position: 0 100%;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.5),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+}
