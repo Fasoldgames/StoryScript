@@ -16,6 +16,17 @@ h2 {
     color: var(--purple);
 }
 
+description {
+    font-family: 'Georgia', 'Palatino Linotype', 'Book Antiqua', serif;
+    color: #704214;
+    display: block;
+}
+
+description p, description br {
+    font-family: 'Georgia', 'Palatino Linotype', 'Book Antiqua', serif;
+    color: #704214;
+}
+
 button {
     margin-right: 10px;
 }
@@ -85,7 +96,7 @@ button {
 }
 
 .box-container {
-    border: solid 1px var(--purple);;
+    border: solid 1px #704214;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px 5px 0 0;
@@ -95,7 +106,7 @@ button {
     font-size: 1.3rem;
     font-family: Andalus;
     color: var(--white);;
-    background-color: var(--purple);;
+    background: linear-gradient(180deg, #A0826D 0%, #8B6F47 25%, #704214 50%, #8B6F47 75%, #A0826D 100%);
     padding: 0 10px;
     margin: -10px -10px 10px -10px;
 }
@@ -134,12 +145,8 @@ button {
     white-space: normal;
 }
 
-#exploration-destinations .btn, #combinations .btn, #trade .btn {
+#combinations .btn, #trade .btn {
     margin: 0 0 5px 5px;
-}
-
-#exploration-destinations button span {
-    margin-right: 0;
 }
 
 #backpack-panel li {
@@ -526,6 +533,18 @@ feature {
 dialog {
     border: none;
     outline: none;
+}
+
+#exploration {
+    margin-bottom: 40px;
+}
+
+#party-container {
+    margin-left: 40px;
+}
+
+#location-container {
+    max-width: 60%;
 }
 
 /* Wood-like Border */

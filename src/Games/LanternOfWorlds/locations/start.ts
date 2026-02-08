@@ -1,16 +1,24 @@
-﻿import { Location } from '../types'
+﻿import { Location, IGame } from '../types'
 import { OldTemple } from './OldTemple';
 import description from './Start.html?raw'
 
 export function Start() {
-    return Location({
+    const location = Location({
         name: 'Camp',
         description: description,
-        destinations: [
-            {
-                name: 'Investigate the ruins',
-                target: OldTemple
-            },
-        ]
+        descriptionSelector: '',
+        destinations: [],
+        actions: [[
+            'InvestigateRuins',
+                {
+                text: 'Investigate the ruins',
+                execute: (game: IGame) => {
+                    game.changeLocation(OldTemple, true);
+                    return false;
+                },
+            }
+        ]]
     });
+    
+    return location;
 }

@@ -6,32 +6,20 @@ import { StrangeStructure } from './StrangeStructure';
 import { ActionStatus } from '../../../Engine/Interfaces/enumerations/actionStatus';
 
 export function OldTemple() {
-	let hasListened = false;
-	let hasLookedAround = false;
-
-	return Location({
+	const location = Location({
 		name: 'Old ruins',
 		description: description,
-		destinations: [
-			
-			{
-				name: 'Old Pillar',
-				target: OldPillar
-			},	
-			{
-				name: 'Strange Structure',
-				target: StrangeStructure
-			},			
-		], 
+		descriptionSelector: '',
+		destinations: [],
 		actions: [[
 			'Listen',
 				{
 				text: 'Listen',
-				status: () => hasListened ? ActionStatus.Unavailable : ActionStatus.Available,
+				status: () => (location as any).hasListened ? ActionStatus.Unavailable : ActionStatus.Available,
 				execute: (game: IGame) => {
-					game.currentLocation.descriptionSelector='listen';
+					(location as any).descriptionSelector='listen';
 					game.actionLog.length=0;
-					hasListened = true;
+					(location as any).hasListened = true;
 					return true;
 				},
 			}
@@ -39,11 +27,11 @@ export function OldTemple() {
 			'Look',
 				{
 				text: 'Look around',
-				status: () => hasLookedAround ? ActionStatus.Unavailable : ActionStatus.Available,
+				status: () => (location as any).hasLookedAround ? ActionStatus.Unavailable : ActionStatus.Available,
 				execute: (game: IGame) => {
-					game.currentLocation.descriptionSelector='look';
+					(location as any).descriptionSelector='look';
 					game.actionLog.length=0;
-					hasLookedAround = true;
+					(location as any).hasLookedAround = true;
 					return true;
 				},
 			}
@@ -51,7 +39,7 @@ export function OldTemple() {
 			'InvestigatePillar',
 				{
 				text: 'Investigate the pillar',
-				status: () => hasLookedAround ? ActionStatus.Available : ActionStatus.Unavailable,
+				status: () => (location as any).hasLookedAround ? ActionStatus.Available : ActionStatus.Unavailable,
 				execute: (game: IGame) => {
 					game.changeLocation(OldPillar, true);
 					return false;
@@ -61,7 +49,7 @@ export function OldTemple() {
 			'InvestigateTomb',
 				{
 				text: 'Investigate the tomb',
-				status: () => hasLookedAround ? ActionStatus.Available : ActionStatus.Unavailable,
+				status: () => (location as any).hasLookedAround ? ActionStatus.Available : ActionStatus.Unavailable,
 				execute: (game: IGame) => {
 					game.actionLog.push('You investigate the mysterious tomb.');
 					return true;
@@ -73,7 +61,7 @@ export function OldTemple() {
 				text: 'Return to Camp',
 				execute: (game: IGame) => {
 					game.changeLocation(Start, true);
-					game.currentLocation.descriptionSelector = 'returned';
+					(location as any).descriptionSelector = '';
 					return false;
 				},
 			}
@@ -82,4 +70,9 @@ export function OldTemple() {
 		]
 		
 	});
+
+	(location as any).hasListened = false;
+	(location as any).hasLookedAround = false;
+	
+	return location;
 }

@@ -27,14 +27,6 @@
         </ul>
       </div>
     </div>
-    <div id="exploration-destinations" class="box-container">
-      <div class="box-title">{{ texts.destinations }}</div>
-      <ul class="list-unstyled">
-        <li v-for="destination of activeDestinations" :class="`inline ${destination.visited ? '' : 'not-'}visited`">
-          <destination :destination="destination"></destination>
-        </li>
-      </ul>
-    </div>
   </div>
 </template>
 <script lang="ts" setup>
@@ -43,10 +35,9 @@ import {storeToRefs} from "pinia";
 import {IAction} from "storyScript/Interfaces/action.ts";
 import {ref} from "vue";
 import {ActionStatus} from "storyScript/Interfaces/enumerations/actionStatus.ts";
-import Destination from "ui/Components/Exploration/Destination.vue";
 
 const store = useStateStore();
-const {game, enemiesPresent, activeActions, activeDestinations} = storeToRefs(store);
+const {game, enemiesPresent, activeActions} = storeToRefs(store);
 const {texts} = store.services;
 
 const confirmAction = ref<[string, IAction]>(null);
